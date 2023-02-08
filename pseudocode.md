@@ -54,7 +54,8 @@
 INIT
     State is initialized
     Page renders with page 1 content
-        - User clicks "Go" on page 1
+Start
+       - User clicks "Go" on page 1
     2nd page is rendered - Updates to the page include(header, subtext, reset button, next button) 
         - User clicks "Next" on page 2 (selected Option)
         - User clicks "reset" on page 2
@@ -70,6 +71,7 @@ INIT
     6th page is rendered - Updates to the page include(header, subtext, reset button, next button)
         - User clicks "reset" on page 6 (selected Option)
     1st page is rendered 
+End
 
 ## Pseudocode
 
