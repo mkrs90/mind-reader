@@ -73,6 +73,11 @@ Start
     1st page is rendered 
 End
 
+
+## How to update a page
+
+You need to know what page your own. Check state. State says page one (how does state know this?) 
+
 ## Pseudocode
 
 Set state = {
