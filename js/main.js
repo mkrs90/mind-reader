@@ -1,13 +1,14 @@
 // create an object that stores the different states
+var symbols = ['+', '@', '#', '$', '%', '^', '!', '*', '~'];
+
 let states = {
-    symbols: ['&', '@', '#', '$', '%', '^', '!', '*', '~'],
     pages: [
         {
             page: 1,
             headerText: "I can read your mind",
             subText1: "",
             subText2: "",
-            nextButtonText: "Go",
+            nextButtonText: "START",
             nextButtonDisplay: "block",
             resetBtnDisplay: "none"
         },
@@ -16,7 +17,7 @@ let states = {
             headerText: "Pick a number from 01 - 99",
             subText1: "when you have your number",
             subText2: "click next",
-            nextButtonText: "Next",
+            nextButtonText: "NEXT",
             nextButtonDisplay: "block",
             resetBtnDisplay: "block"
         },
@@ -25,7 +26,7 @@ let states = {
             headerText: "Add both digits together to get a new number",
             subText1: "Ex: 14 is 1 + 4 = 5",
             subText2: "click next to proceed",
-            nextButtonText: "Next",
+            nextButtonText: "NEXT",
             nextButtonDisplay: "block",
             resetBtnDisplay: "block"
         },
@@ -34,16 +35,16 @@ let states = {
             headerText: "Subtract your new number from the original number",
             subText1: "Ex: 14 - 5 = 9",
             subText2: "click next to proceed",
-            nextButtonText: "Next",
+            nextButtonText: "NEXT",
             nextButtonDisplay: "block",
             resetBtnDisplay: "block"
         },
         {
             page: 5,
-            headerText: createSymbols(),
+            headerText: create99Symbol(),
             subText1: "Find your new number.",
             subText2: "Note the symbol beside the number",
-            nextButtonText: "Reveal",
+            nextButtonText: "REVEAL",
             nextButtonDisplay: "block",
             resetBtnDisplay: "block"
         },
@@ -60,19 +61,33 @@ let states = {
 };
 
 let currentPage = 0;
-//if a page is greater than one make reset button visible
 
-//if a page is less than 6 make the next button visible
 
 //creates an array of 99 symbols
-function createSymbols() {
-    let symbols = ['&', '@', '#', '$', '%', '^', '!', '*', '~'];
+function randomizeSymbol(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+
+function create99Symbol() {
     let symbolsArr = [];
     for (let i = 0; i < 100; i++) {
-        symbolsArr.push(i + " - " + symbols[i % 9]);
+        if (i % 9 == 0) {
+            symbolsArr.push(i + " - &");
+        } else {
+            symbolsArr.push(i + " - " + randomizeSymbol(symbols));
+        } 
     }
     return symbolsArr.toString().replaceAll(",", "<br>");
 };
+// function create99Symbol() {
+//     let symbols = ['&', '@', '#', '$', '%', '^', '!', '*', '~'];
+//     let symbolsArr = [];
+//     for (let i = 0; i < 100; i++) {
+//         symbolsArr.push(i + " - " + symbols[i % 9]);
+//     }
+//     return symbolsArr.toString().replaceAll(",", "<br>");
+// };
 
 //resets current page to first page
 function reset() {
