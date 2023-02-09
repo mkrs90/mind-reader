@@ -1,13 +1,5 @@
-//variables needed
-// let visible = document.getElementById("element").style.visibility = "visible";
-// let invisible = document.getElementById("element").style.visibility = "hidden";
-
-
-
-
-// creates an object to store the state
-
-let setState = {
+// create an object that stores the different states
+let states = {
     symbols: ['&', '@', '#', '$', '%', '^', '!', '*', '~'],
     pages: [
         {
@@ -16,51 +8,53 @@ let setState = {
             subText1: "",
             subText2: "",
             nextButtonText: "Go",
+            nextButtonDisplay: "block",
+            resetBtnDisplay: "none"
         },
         {
             page: 2,
             headerText: "Pick a number from 01 - 99",
             subText1: "when you have your number",
             subText2: "click next",
-            // nextButtonStatus: document.getElementById("element").style.visibility = "visible",
             nextButtonText: "Next",
-            // resetButton: document.getElementById("element").style.visibility = "visible"
+            nextButtonDisplay: "block",
+            resetBtnDisplay: "block"
         },
         {
             page: 3,
             headerText: "Add both digits together to get a new number",
             subText1: "Ex: 14 is 1 + 4 = 5",
             subText2: "click next to proceed",
-            // nextButtonStatus: document.getElementById("element").style.visibility = "visible",
             nextButtonText: "Next",
-            // resetButton: document.getElementById("element").style.visibility = "visible"
+            nextButtonDisplay: "block",
+            resetBtnDisplay: "block"
         },
         {
             page: 4,
             headerText: "Subtract your new number from the original number",
             subText1: "Ex: 14 - 5 = 9",
             subText2: "click next to proceed",
-            // nextButtonStatus: document.getElementById("element").style.visibility = "visible",
             nextButtonText: "Next",
-            // resetButton: document.getElementById("element").style.visibility = "visible"
+            nextButtonDisplay: "block",
+            resetBtnDisplay: "block"
         },
         {
             page: 5,
             headerText: createSymbols(),
             subText1: "Find your new number.",
             subText2: "Note the symbol beside the number",
-            // nextButtonStatus: document.getElementById("element").style.visibility = "visible",
             nextButtonText: "Reveal",
-            // resetButton: document.getElementById("element").style.visibility = "visible"
+            nextButtonDisplay: "block",
+            resetBtnDisplay: "block"
         },
         {
             page: 6,
             headerText: "&",
             subText1: "Your symbol is:",
             subText2: "&",
-            // nextButtonStatus: document.getElementById("element").style.visibility = "hidden",
             nextButtonText: "",
-            // resetButton: document.getElementById("element").style.visibility = "visible"
+            nextButtonDisplay: "none",
+            resetBtnDisplay: "block"
         }
     ]
 };
@@ -73,56 +67,31 @@ let currentPage = 0;
 //creates an array of 99 symbols
 function createSymbols() {
     let symbols = ['&', '@', '#', '$', '%', '^', '!', '*', '~'];
-    let symbols99Arr = [];
+    let symbolsArr = [];
     for (let i = 0; i < 100; i++) {
-        symbols99Arr.push(symbols[i % 9]);
+        symbolsArr.push(i + " - " + symbols[i % 9]);
     }
-    return symbols99Arr;
+    return symbolsArr.toString().replaceAll(",", "<br>");
 };
-
-//function that sets current page
-// function setPage() {
-//     let page = currentPage;
-//     if (page < 6) {
-//         page++;
-//     } else {
-//         page = 1;
-//     }
-// };
 
 //resets current page to first page
 function reset() {
     currentPage = 0;
-    document.getElementById("appHeader").innerHTML = setState.pages[currentPage].headerText;
-    document.getElementById("appSubText1").innerHTML = setState.pages[currentPage].subText1;
-    document.getElementById("appSubText2").innerHTML = setState.pages[currentPage].subText2;
-    document.getElementById("nextBtn").innerHTML = setState.pages[currentPage].nextButtonText;
+    document.getElementById("appHeader").innerHTML = states.pages[currentPage].headerText;
+    document.getElementById("appSubText1").innerHTML = states.pages[currentPage].subText1;
+    document.getElementById("appSubText2").innerHTML = states.pages[currentPage].subText2;
+    document.getElementById("appResetBtn").style.display = states.pages[currentPage].resetBtnDisplay;
+    document.getElementById("nextBtn").style.display = states.pages[currentPage].nextButtonDisplay;
+    document.getElementById("nextBtn").innerHTML = states.pages[currentPage].nextButtonText; 
 };
 
 //moves the page up by one
-function nextPage() {
-//     if (currentPage === setState.pages[0]) {
-//         currentPage = setState.pages[1];
-//     } else if (currentPage === setState.pages[1]) {
-//         currentPage === setState.pages[2];
-//     } else if (currentPage === setState.pages[2]) {
-//         currentPage === setState.pages[3];
-//     } else if (currentPage === setState.pages[3]) {
-//         currentPage === setState.pages[4];
-//     } else if (currentPage === setState.pages[4]) {
-//         currentPage === setState.pages[5];
-//     } else if (currentPage === setState.pages[5]) {
-//         currentPage === setState.pages[6];
-//     } else if (currentPage === setState.pages[6]) {
-//         currentPage === setState.pages[6];
-//     }
-};
-
 function setPage() {
     currentPage++
-    document.getElementById("appHeader").innerHTML = setState.pages[currentPage].headerText;
-    document.getElementById("appSubText1").innerHTML = setState.pages[currentPage].subText1;
-    document.getElementById("appSubText2").innerHTML = setState.pages[currentPage].subText2;
-    document.getElementById("nextBtn").innerHTML = setState.pages[currentPage].nextButtonText;
-    document.getElementById("appResetBtn").style.display = 'block';
+    document.getElementById("appHeader").innerHTML = states.pages[currentPage].headerText;
+    document.getElementById("appSubText1").innerHTML = states.pages[currentPage].subText1;
+    document.getElementById("appSubText2").innerHTML = states.pages[currentPage].subText2;
+    document.getElementById("appResetBtn").style.display = states.pages[currentPage].resetBtnDisplay;
+    document.getElementById("nextBtn").style.display = states.pages[currentPage].nextButtonDisplay;
+    document.getElementById("nextBtn").innerHTML = states.pages[currentPage].nextButtonText;    
 };
