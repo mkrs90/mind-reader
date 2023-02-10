@@ -2,6 +2,8 @@
 var symbols = ['+', '@', '#', '$', '%', '^', '!', '*', '~'];
 
 let states = {
+    // symbols: ['+', '@', '#', '$', '%', '^', '!', '*', '~'], //tried added here but got error trying to init state.
+    currentPage: 0,
     pages: [
         {
             page: 1,
@@ -60,7 +62,7 @@ let states = {
     ]
 };
 
-let currentPage = 0;
+// let currentPage = 0;
 
 
 //creates an array of 99 symbols
@@ -91,22 +93,22 @@ function create99Symbol() {
 
 //resets current page to first page
 function reset() {
-    currentPage = 0;
-    document.getElementById("appHeader").innerHTML = states.pages[currentPage].headerText;
-    document.getElementById("appSubText1").innerHTML = states.pages[currentPage].subText1;
-    document.getElementById("appSubText2").innerHTML = states.pages[currentPage].subText2;
-    document.getElementById("appResetBtn").style.display = states.pages[currentPage].resetBtnDisplay;
-    document.getElementById("nextBtn").style.display = states.pages[currentPage].nextButtonDisplay;
-    document.getElementById("nextBtn").innerHTML = states.pages[currentPage].nextButtonText; 
+    states.currentPage = 0;
+    document.getElementById("appHeader").innerHTML = states.pages[states.currentPage].headerText;
+    document.getElementById("appSubText1").innerHTML = states.pages[states.currentPage].subText1;
+    document.getElementById("appSubText2").innerHTML = states.pages[states.currentPage].subText2;
+    document.getElementById("appResetBtn").style.display = states.pages[states.currentPage].resetBtnDisplay;
+    document.getElementById("nextBtn").style.display = states.pages[states.currentPage].nextButtonDisplay;
+    document.getElementById("nextBtn").innerHTML = states.pages[states.currentPage].nextButtonText; 
 };
 
 //moves the page up by one
 function setPage() {
-    currentPage++
-    document.getElementById("appHeader").innerHTML = states.pages[currentPage].headerText;
-    document.getElementById("appSubText1").innerHTML = states.pages[currentPage].subText1;
-    document.getElementById("appSubText2").innerHTML = states.pages[currentPage].subText2;
-    document.getElementById("appResetBtn").style.display = states.pages[currentPage].resetBtnDisplay;
-    document.getElementById("nextBtn").style.display = states.pages[currentPage].nextButtonDisplay;
-    document.getElementById("nextBtn").innerHTML = states.pages[currentPage].nextButtonText;    
+    states.currentPage++
+    document.getElementById("appHeader").innerHTML = states.pages[states.currentPage].headerText;
+    document.getElementById("appSubText1").innerHTML = states.pages[states.currentPage].subText1;
+    document.getElementById("appSubText2").innerHTML = states.pages[states.currentPage].subText2;
+    document.getElementById("appResetBtn").style.display = states.pages[states.currentPage].resetBtnDisplay;
+    document.getElementById("nextBtn").style.display = states.pages[states.currentPage].nextButtonDisplay;
+    document.getElementById("nextBtn").innerHTML = states.pages[states.currentPage].nextButtonText;    
 };
